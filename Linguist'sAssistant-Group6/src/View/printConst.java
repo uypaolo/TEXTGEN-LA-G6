@@ -36,14 +36,14 @@ public class printConst {
 		details = details.concat("Features Count: "+fList.size()+"\n");
 		
 		for(int i=0; i<fList.size(); i++){
-			System.out.println("    Feature #"+(i+1));
-			System.out.println("    Name: "+fList.get(i).getName());
-			System.out.println("    Value: "+fList.get(i).getValue());
+			System.out.println("Feature #"+(i+1));
+			System.out.println("Name: "+fList.get(i).getName());
+			System.out.println("Value: "+fList.get(i).getValue());
 			System.out.println();
 			
-			features = features.concat("    Feature #"+(i+1)+"\n");
-			features = features.concat("    Name: "+fList.get(i).getName()+"\n");
-			features = features.concat("    Value: "+fList.get(i).getValue()+"\n\n");
+			features = features.concat("Feature #"+(i+1)+"\n");
+			features = features.concat("Name: "+fList.get(i).getName()+"\n");
+			features = features.concat("Value: "+fList.get(i).getValue()+"\n\n");
 		}
 		
 		System.out.println("Subconst: "+currConst.getSubconst().getConstList().size());			
