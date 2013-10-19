@@ -58,7 +58,6 @@ public class EditPanel extends JPanel{
 		};
 		//m.addRow(rowData);
 		this.features = new JTable(m);
-		this.features.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
 		
 		this.moveUp = new JButton("Move Up");
 		this.moveUp.addActionListener(new ActionListener(){
