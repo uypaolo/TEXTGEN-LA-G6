@@ -68,6 +68,16 @@ public class DocumentsWindow extends JFrame implements WindowListener{
 			
 		});
 		this.cancelButton = new JButton("Cancel");
+		this.cancelButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				//currFile = "src/Documents/"+sBook+"/"+sVerse+".xml";
+				dispose();
+				//Frame.lo
+			}
+			
+		});
 		
 		this.add(this.bLabel, "split 2, span 2, right");
 		this.add(this.bookList, "wrap, growx");
@@ -90,7 +100,7 @@ public class DocumentsWindow extends JFrame implements WindowListener{
  
         for (File file : fList){
             if (file.isFile()){
-            	if(file.getName().endsWith(".xml")){
+            	if(file.getName().endsWith(".xml") && file.getName().startsWith(book+"_")){
             		verses.add(file.getName().replace(".xml", ""));
             	}
             }
