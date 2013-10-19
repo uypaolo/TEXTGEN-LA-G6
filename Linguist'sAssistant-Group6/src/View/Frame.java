@@ -49,7 +49,6 @@ public class Frame extends JFrame{
 	private JMenuItem imp;
 	private JMenuItem exp;
 	private JMenuItem viewfeature;
-	//private JMenuItem viewlexicon;
 	private JMenuItem maplexicon;
 	private JMenuItem lexicon;
 	
@@ -213,12 +212,12 @@ public class Frame extends JFrame{
         this.file.add(this.imp);
         this.file.add(this.exp);
         this.file.addSeparator();
-        this.file.add(this.exit);
+        this.file.add(this.exit);    
         
-        this.tools.add(this.maplexicon);
-        this.tools.add(this.viewfeature);
-        this.tools.addSeparator();
         this.tools.add(this.viewlexicon);
+        this.tools.add(this.maplexicon);
+        this.tools.addSeparator();
+        this.tools.add(this.viewfeature);
         
         this.viewlexicon.add(this.lexicon);
       
