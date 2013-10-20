@@ -25,7 +25,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-
+/** Basta before you edit, Pull mo muna 
+ * 	if up to date siya, then edit na
+ * 	after you edit, click commit then push **/
 
 public class ViewFeature extends JPanel{
 	
