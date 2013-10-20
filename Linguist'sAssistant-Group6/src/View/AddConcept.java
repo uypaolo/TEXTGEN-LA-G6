@@ -23,8 +23,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class AddConcept extends JPanel implements ItemListener, ActionListener{
 	private JTextField Word, Definition;
@@ -122,6 +124,83 @@ public class AddConcept extends JPanel implements ItemListener, ActionListener{
 		
 		add = new JButton("Add Word");
 		add.setBounds(330,340,150,20);
+		add.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{	
+				if(e.getSource()== add)
+				{
+					try{
+	     				String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "nitsujgarcia";
+	     				Connection con = DriverManager.getConnection(host, uName, pWord);
+						String sql = null;
+	     				Statement stmt = con.createStatement();
+
+	     					if(ADJ.isSelected()){
+	    	     				sql = "INSERT INTO adj (adjID,name,definition) " +
+	    	     						"VALUES (null, '" + Word.getText() + "','" + Definition.getText() + "' )";
+	    	     				stmt.executeUpdate(sql);
+	     					}
+	     					if(ADVS.isSelected()){
+	    	     				sql = "INSERT INTO advs (advsID,name,definition) " +
+	    	     						"VALUES (null, '" + Word.getText() + "','" + Definition.getText() + "' )";
+	    	     				stmt.executeUpdate(sql);
+	     					}
+	     					if(CONJUNC.isSelected()){
+	    	     				sql = "INSERT INTO conjunctions (conID,name,definition) " +
+	    	     						"VALUES (null, '" + Word.getText() + "','" + Definition.getText() + "' )";
+	    	     				stmt.executeUpdate(sql);
+	     					}
+	     					if(FEMNOUNS.isSelected()){
+	    	     				sql = "INSERT INTO femininenouns (fnID,name,definition) " +
+	    	     						"VALUES (null, '" + Word.getText() + "','" + Definition.getText() + "' )";
+	    	     				stmt.executeUpdate(sql);
+	     					}
+	     					if(MASCNOUNS.isSelected()){
+	    	     				sql = "INSERT INTO masculinenouns (mnID,name,definition) " +
+	    	     						"VALUES (null, '" + Word.getText() + "','" + Definition.getText() + "' )";
+	    	     				stmt.executeUpdate(sql);
+	     					}
+	     					if(PRTC.isSelected()){
+	    	     				sql = "INSERT INTO particles (pID,name,definition) " +
+	    	     						"VALUES (null, '" + Word.getText() + "','" + Definition.getText() + "' )";
+	    	     				stmt.executeUpdate(sql);
+	     					}
+	     					if(N.isSelected()){
+	    	     				sql = "INSERT INTO nouns (nID,name,definition) " +
+	    	     						"VALUES (null, '" + Word.getText() + "','" + Definition.getText() + "' )";
+	    	     				stmt.executeUpdate(sql);
+	     					}
+	     					if(REL.isSelected()){
+	    	     				sql = "INSERT INTO relations (rID,name,definition) " +
+	    	     						"VALUES (null, '" + Word.getText() + "','" + Definition.getText() + "' )";
+	    	     				stmt.executeUpdate(sql);
+	     					}
+	     					if(V.isSelected()){
+	    	     				sql = "INSERT INTO verbs (vID,name,definition) " +
+	    	     						"VALUES (null, '" + Word.getText() + "','" + Definition.getText() + "' )";
+	    	     				stmt.executeUpdate(sql);
+	     					}
+	     					if(PLACENAMES.isSelected()){
+	    	     				sql = "INSERT INTO placenames (pnID,name,definition) " +
+	    	     						"VALUES (null, '" + Word.getText() + "','" + Definition.getText() + "' )";
+	    	     				stmt.executeUpdate(sql);
+	     					}
+	     				
+	     				stmt.close();
+						con.close();
+						
+	     			}catch(SQLException err){
+	     				JOptionPane.showMessageDialog(null, err.getMessage());
+	     				err.printStackTrace();
+	     				}
+					JOptionPane.showMessageDialog(null, "Concept added!");
+					frame.setContentPane(new ViewConcept(frame, "ADJ"));
+					frame.revalidate();
+					frame.repaint();
+				}
+			}
+		});
 		
 		cancel = new JButton("Cancel");
 		cancel.setBounds(330,370,150,20);

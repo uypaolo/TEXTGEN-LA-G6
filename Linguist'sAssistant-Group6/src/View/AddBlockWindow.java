@@ -24,9 +24,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import Model.ConstModel;
+
 public class AddBlockWindow extends JPanel{
 	
 	private constContainer clicked;
+	private ConstModel newBlock;
 	
 	private JTextField name, con;
 	private JLabel pos, lname, lcon, concept;
@@ -86,6 +89,8 @@ public class AddBlockWindow extends JPanel{
 			{	
 				if(e.getSource()== add)
 				{	
+					
+					//newBlock = new ConstModel();
 					//clicked.getDetails().getSubconst().getConstList().
 				}
 			}
