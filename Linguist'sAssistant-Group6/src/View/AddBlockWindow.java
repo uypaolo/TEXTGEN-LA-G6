@@ -23,9 +23,11 @@ import javax.swing.JTextField;
 
 public class AddBlockWindow extends JPanel{
 	
+	private constContainer clicked;
+	
 	private JLabel pos;
 	private JLabel concept;
-	private JTextField featName, featValue, featValueName;
+	private JTextField featName, featValue, featValueName, conceptName;
 	private JLabel name, value, valuename, application;
 		
 	public AddBlockWindow(final JFrame frame){
@@ -64,6 +66,10 @@ public class AddBlockWindow extends JPanel{
 
 		setBackground(Color.MAGENTA);
 	
+	}
+	
+	public void setConstContainer(constContainer c){
+		this.clicked = c;
 	}
 	
 }

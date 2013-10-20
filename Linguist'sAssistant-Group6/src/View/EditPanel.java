@@ -143,6 +143,7 @@ public class EditPanel extends JPanel{
 	private void addBlock(){
 		JFrame addblock = new JFrame("Add Block");
 		AddBlockWindow addblockwindow = new AddBlockWindow(addblock);
+		addblockwindow.setConstContainer(this.c);
 		addblock.pack();
 		addblock.setVisible(true);
 		addblock.setBounds(0,0,300,300);
