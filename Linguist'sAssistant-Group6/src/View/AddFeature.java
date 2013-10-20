@@ -128,7 +128,7 @@ public class AddFeature extends JPanel implements ItemListener, ActionListener{
 				if(e.getSource() == addFeature)
 				{	
 					try{
-	     				String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "daniellel";
+	     				String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "nitsujgarcia";
 	     				Connection con = DriverManager.getConnection(host, uName, pWord);
 						String sql = null;
 	     				Statement stmt = con.createStatement();

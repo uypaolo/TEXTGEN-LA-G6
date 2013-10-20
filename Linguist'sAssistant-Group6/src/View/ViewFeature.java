@@ -52,7 +52,7 @@ public class ViewFeature extends JPanel{
 		cBox.addItem("ADV");
 		
 		try{
-			String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "daniellel";
+			String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "nitsujgarcia";
 			Connection con = DriverManager.getConnection(host,uName,pWord);
 			
 			Statement stmt = con.createStatement();

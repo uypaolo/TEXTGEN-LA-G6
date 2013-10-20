@@ -32,7 +32,6 @@ public class EditPanel extends JPanel{
 	
 	private JTable features;
 	
-
 	private JPanel bPanel;
 	private JPanel fPanel;
 	private JLabel noFeature;
@@ -146,12 +145,10 @@ public class EditPanel extends JPanel{
 		addblockwindow.setConstContainer(this.c);
 		addblock.pack();
 		addblock.setVisible(true);
-		addblock.setBounds(0,0,300,300);
+		addblock.setBounds(0,0,400,300);
 		addblock.setResizable(false);
 		addblock.getContentPane().add(addblockwindow);
-		
-	
-		
+
 	}
 	
 	public void activateButton(){
