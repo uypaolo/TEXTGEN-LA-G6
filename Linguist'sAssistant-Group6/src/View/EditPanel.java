@@ -111,6 +111,16 @@ public class EditPanel extends JPanel{
 		this.addFeature.setEnabled(false);
 		
 		this.removeFeature = new JButton("Remove Feature");
+		this.removeFeature.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(features.getSelectedRow()>-1){
+					removeFeature();
+				}
+			}
+			
+		});
 		this.removeFeature.setEnabled(false);
 		
 		this.bPanel.add(this.addBlock, "pushx, center, wrap");
@@ -242,5 +252,11 @@ public class EditPanel extends JPanel{
 		pm.getSubconst().getConstList().remove(cm);
 		resetPanel();
 		Frame.vp.resetTables();
+	}
+	
+	public void removeFeature(){
+		ConstModel temp = this.c.getDetails();
+		temp.getFeatures().getFeatureList().remove(this.features.getSelectedRow());
+		setFeatures(temp.getFeatures().getFeatureList());
 	}
 }
