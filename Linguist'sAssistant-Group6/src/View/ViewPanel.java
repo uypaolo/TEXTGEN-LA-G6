@@ -1,6 +1,9 @@
 package View;
 
+import Model.*;
+
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -68,10 +71,70 @@ public class ViewPanel extends JPanel{
 		this.add(tPane, "push, grow");
 	}
 	
-	public void resetPanels(){
-
+	public void resetTables(){
+		resetDetails();
+		resetFeatures();
+		resetConcept();
 	}
 	
+	private void resetFeatures(){
+		DefaultTableModel m = (DefaultTableModel) this.fTable.getModel();
+		m.getDataVector().removeAllElements();
+		m.fireTableDataChanged();
+	}
+	
+	private void resetConcept(){
+		DefaultTableModel m = (DefaultTableModel) this.cTable.getModel();
+		m.getDataVector().removeAllElements();
+		m.fireTableDataChanged();
+	}
+	
+	private void resetDetails(){
+		DefaultTableModel m = (DefaultTableModel) this.dTable.getModel();
+		m.getDataVector().removeAllElements();
+		m.fireTableDataChanged();
+	}
+	
+	private void setFeatures(ArrayList<FeatureModel> fList){		
+		
+		if(fList.size()<1){
+			resetFeatures();
+		}
+		else{
+			DefaultTableModel m = (DefaultTableModel) this.fTable.getModel();
+			m.getDataVector().removeAllElements();
+			for(FeatureModel f: fList){		
+				m.addRow(new String[]{f.getName(), f.getValue()});
+			}
+			
+			m.fireTableDataChanged();
+		}
+	}
+	
+	private void setConcept(ConceptModel c){		
+		
+		if(c.getName().equals("")){
+			resetConcept();
+		}
+		else{
+			DefaultTableModel m = (DefaultTableModel) this.cTable.getModel();
+			m.getDataVector().removeAllElements();	
+			m.addRow(c.getName().split("-"));
+			
+			m.fireTableDataChanged();
+		}
+	}
+	
+	private void setDetails(ConstModel c){		
+		
+		DefaultTableModel m = (DefaultTableModel) this.dTable.getModel();
+		m.getDataVector().removeAllElements();	
+		m.addRow(new String[]{"Label", c.getLabel()});
+		m.addRow(new String[]{"Features Count", ""+c.getFeatures().getFeatureList().size()});
+		m.addRow(new String[]{"Subconst Count", ""+c.getSubconst().getConstList().size()});
+		
+		m.fireTableDataChanged();
+	}
 	
 	public void setConst(constContainer cn){
 		if(c != null){
@@ -79,5 +142,9 @@ public class ViewPanel extends JPanel{
 		}
 		this.c = cn;
 		this.c.setForeground(Color.RED);
+		setDetails(cn.getDetails());
+		setFeatures(cn.getDetails().getFeatures().getFeatureList());
+		setConcept(cn.getDetails().getConcept());
+		
 	}
 }

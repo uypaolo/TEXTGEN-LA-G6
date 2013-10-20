@@ -528,7 +528,7 @@ public class Frame extends JFrame{
 		this.mainArea.add(currCont, "pushx, growx, wrap");
 		this.revalidate();
 		this.mainArea.repaint();
-		this.vp.resetPanels();
+		this.vp.resetTables();
 		this.ep.resetPanel();
 		this.source = "";
 		//mainArea.printAll(getGraphics());

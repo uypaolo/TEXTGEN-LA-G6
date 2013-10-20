@@ -216,6 +216,6 @@ public class EditPanel extends JPanel{
 		ConstModel pm = cm.getParent();
 		pm.getSubconst().getConstList().remove(cm);
 		resetPanel();
-		Frame.vp.resetPanels();
+		Frame.vp.resetTables();
 	}
 }
