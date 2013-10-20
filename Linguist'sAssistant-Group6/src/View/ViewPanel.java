@@ -19,10 +19,6 @@ public class ViewPanel extends JPanel{
 	private JTable fTable;
 	private JTable cTable;
 	
-	private JPanel details;
-	private JPanel features;
-	private JPanel concepts;
-	
 	private JTabbedPane tPane;
 	private JScrollPane fPane;
 	private JScrollPane dPane;
@@ -60,15 +56,6 @@ public class ViewPanel extends JPanel{
 		};
 		this.cTable = new JTable(m);
 		this.cTable.setTableHeader(null);
-		
-		this.details = new JPanel();
-		this.details.setLayout(new MigLayout());
-		
-		this.features = new JPanel();
-		this.features.setLayout(new MigLayout());
-		
-		this.concepts = new JPanel();
-		this.concepts.setLayout(new MigLayout());
 		
 		this.fPane = new JScrollPane(this.fTable);
 		this.dPane = new JScrollPane(this.dTable);
