@@ -45,13 +45,13 @@ public class Frame extends JFrame{
 	private JMenuBar menubar;
 	private JMenu file;
 	private JMenu tools;
-	private JMenu viewlexicon;
+	private JMenu viewconcepts;
 	private JMenuItem exit;
 	private JMenuItem imp;
 	private JMenuItem exp;
 	private JMenuItem viewfeature;
 	private JMenuItem maplexicon;
-	private JMenuItem lexicon;
+	private JMenuItem concepts;
 	
 	
 	private XMLFileModule xml;
@@ -180,15 +180,15 @@ public class Frame extends JFrame{
             }
         });
         
-        this.viewlexicon = new JMenu("Ontology and Lexicon");
-        this.viewlexicon.setMnemonic(KeyEvent.VK_E);
-        this.viewlexicon.setToolTipText("Ontology and Lexicon");
+        this.viewconcepts = new JMenu("Ontology and Lexicon");
+        this.viewconcepts.setMnemonic(KeyEvent.VK_E);
+        this.viewconcepts.setToolTipText("Ontology and Lexicon");
         
-        this.lexicon = new JMenuItem("Lexicon");
-        this.lexicon.setMnemonic(KeyEvent.VK_E);
-        this.lexicon.addActionListener(new ActionListener() {
+        this.concepts = new JMenuItem("Concepts");
+        this.concepts.setMnemonic(KeyEvent.VK_E);
+        this.concepts.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-            	viewLexicon();
+            	viewConcept();
             }
         });
         
@@ -215,12 +215,13 @@ public class Frame extends JFrame{
         this.file.addSeparator();
         this.file.add(this.exit);    
         
-        this.tools.add(this.viewlexicon);
-        this.tools.add(this.maplexicon);
-        this.tools.addSeparator();
-        this.tools.add(this.viewfeature);
         
-        this.viewlexicon.add(this.lexicon);
+        this.tools.add(this.maplexicon);
+        this.tools.add(this.viewfeature);
+        this.tools.addSeparator();
+        this.tools.add(this.viewconcepts);
+        
+        this.viewconcepts.add(this.concepts);
       
         this.menubar.add(this.file);
         this.menubar.add(this.tools);
@@ -426,7 +427,7 @@ public class Frame extends JFrame{
 	}
 	
 	private void viewFeature(){
-    	JFrame view = new JFrame("View Feature");
+    	JFrame view = new JFrame("View Features");
     	ViewFeature viewfeature = new ViewFeature(view, "ALL");
     	view.pack();
     	view.setVisible(true);
@@ -435,9 +436,9 @@ public class Frame extends JFrame{
     	view.getContentPane().add(viewfeature);
 	}
 	
-	private void viewLexicon(){
-    	JFrame view = new JFrame("View Lexicon");
-    	ViewLexicon viewlexicon = new ViewLexicon(view);
+	private void viewConcept(){
+    	JFrame view = new JFrame("View Concepts");
+    	ViewConcept viewlexicon = new ViewConcept(view, "ADJ");
     	view.pack();
     	view.setVisible(true);
     	view.setBounds(0,0,800,500);
