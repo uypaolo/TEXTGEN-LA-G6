@@ -36,9 +36,6 @@ import org.jdesktop.swingx.JXTaskPane;
 
 import net.miginfocom.swing.MigLayout;
 
-/** HELLO **/
-/** HELLO DIN **/
-/** HELLO ULIT **/
 
 public class Frame extends JFrame{
 	static boolean dwOpen;
