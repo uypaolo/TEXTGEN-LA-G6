@@ -5,6 +5,7 @@ import Model.*;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -17,6 +18,12 @@ import net.miginfocom.swing.MigLayout;
 public class ViewPanel extends JPanel{
 	
 	private constContainer c;
+	
+	private JLabel noFeatures;
+	private JLabel noConcept;
+	
+	private JPanel fPanel;
+	private JPanel cPanel;
 	
 	private JTable dTable;
 	private JTable fTable;
@@ -36,6 +43,18 @@ public class ViewPanel extends JPanel{
 	public void init(){
 		this.tPane = new JTabbedPane();
 		//this.tPane.setLayout(new MigLayout());
+		this.fPanel = new JPanel();
+		this.fPanel.setLayout(new MigLayout("", "[grow]", "[grow]"));
+		
+		this.cPanel = new JPanel();
+		this.cPanel.setLayout(new MigLayout("", "[grow]", "[grow]"));
+		
+		this.noFeatures = new JLabel("No Feature");
+		this.noFeatures.setVisible(true);
+		
+		this.noConcept = new JLabel("No Concept");
+		this.noConcept.setVisible(true);
+		
 		DefaultTableModel m = new DefaultTableModel(new Object[]{"Name", "Value"},0){
 			public boolean isCellEditable(int row, int column){
 				return false;
@@ -50,7 +69,7 @@ public class ViewPanel extends JPanel{
 			}
 		};
 		this.fTable = new JTable(m);
-		this.fTable.setTableHeader(null);
+		//this.fTable.setTableHeader(null);
 		
 		m = new DefaultTableModel(new Object[]{"Name", "Value"},0){
 			public boolean isCellEditable(int row, int column){
@@ -64,9 +83,15 @@ public class ViewPanel extends JPanel{
 		this.dPane = new JScrollPane(this.dTable);
 		this.cPane = new JScrollPane(this.cTable);
 		
+		//this.fPanel.add(this.noFeatures, "pushx, wrap");
+		//this.cPanel.add(this.noConcept, "pushx, wrap");
+		
+		this.fPanel.add(this.fPane);
+		this.cPanel.add(this.cPane);
+		
 		this.tPane.add("Details", this.dPane);
-		this.tPane.add("Features", this.fPane);
-		this.tPane.add("Concepts", this.cPane);
+		this.tPane.add("Features", this.fPanel);
+		this.tPane.add("Concepts", this.cPanel);
 		
 		this.add(tPane, "push, grow");
 	}
@@ -99,8 +124,20 @@ public class ViewPanel extends JPanel{
 		
 		if(fList.size()<1){
 			resetFeatures();
+			//this.noFeatures.setVisible(true);
+			if(!this.fPanel.getComponent(0).equals(this.noFeatures)){
+				this.fPanel.add(this.noFeatures, "pushx, center, wrap", 0);
+				this.fPanel.revalidate();
+				this.fPanel.repaint();
+			}
 		}
 		else{
+			if(this.fPanel.getComponent(0).equals(this.noFeatures)){
+				this.fPanel.remove(this.noFeatures);
+				this.fPanel.revalidate();
+				this.fPanel.repaint();
+			}
+			//this.noConcept.setVisible(false);
 			DefaultTableModel m = (DefaultTableModel) this.fTable.getModel();
 			m.getDataVector().removeAllElements();
 			for(FeatureModel f: fList){		
@@ -115,8 +152,20 @@ public class ViewPanel extends JPanel{
 		
 		if(c.getName().equals("")){
 			resetConcept();
+			//this.noConcept.setVisible(true);
+			if(!this.cPanel.getComponent(0).equals(this.noConcept)){
+				this.cPanel.add(this.noConcept, "pushx,center, wrap",0);
+				this.cPanel.revalidate();
+				this.cPanel.repaint();
+			}
 		}
 		else{
+			if(this.cPanel.getComponent(0).equals(this.noConcept)){
+				this.cPanel.remove(this.noConcept);
+				this.cPanel.revalidate();
+				this.cPanel.repaint();
+			}
+			//this.noConcept.setVisible(false);
 			DefaultTableModel m = (DefaultTableModel) this.cTable.getModel();
 			m.getDataVector().removeAllElements();	
 			m.addRow(c.getName().split("-"));
