@@ -83,7 +83,7 @@ public class Frame extends JFrame{
 	private JLabel mode, gLabel, vCount;
 	
 	static ViewPanel vp;
-	private EditPanel ep;
+	static EditPanel ep;
 	private printConst p;
 	
 	private CardLayout cl;
@@ -578,10 +578,10 @@ public class Frame extends JFrame{
 
 	}
 	
-	private void setDetails(constContainer c){
-		this.vp.setConst(c);
-		this.ep.setConst(c);
-		this.ep.activateButton();
+	static void setDetails(constContainer c){
+		vp.setConst(c);
+		ep.setConst(c);
+		ep.activateButton();
 	}
 	
 	public void loadXML(){
