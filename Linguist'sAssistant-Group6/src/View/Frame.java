@@ -444,6 +444,8 @@ public class Frame extends JFrame{
     	view.setResizable(false);
     	view.getContentPane().add(viewlexicon);
 	}
+	
+	
 
 	
 	private constContainer genPane(ConstModel currConst, constContainer tp, int index){	
