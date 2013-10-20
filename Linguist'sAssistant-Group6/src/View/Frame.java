@@ -54,6 +54,7 @@ public class Frame extends JFrame{
 	private JMenu tools;
 	private JMenu viewconcepts;
 	private JMenuItem exit;
+	private JMenuItem newSR;
 	private JMenuItem imp;
 	private JMenuItem exp;
 	private JMenuItem viewfeature;
@@ -157,6 +158,18 @@ public class Frame extends JFrame{
             }
         });
         
+        this.newSR = new JMenuItem("New");
+        this.newSR.setMnemonic(KeyEvent.VK_E);
+        this.newSR.setToolTipText("Create new semantic rep");
+        this.newSR.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                String title = JOptionPane.showInputDialog("Enter the title of the semantic sep:");
+                if(!title.equals("")){
+                	createNewSR(title);
+                }
+            }
+        });
+        
         this.imp = new JMenuItem("Import");
         this.imp.setMnemonic(KeyEvent.VK_E);
         this.imp.setToolTipText("Import XML");
@@ -164,6 +177,7 @@ public class Frame extends JFrame{
             public void actionPerformed(ActionEvent event) {
             	browseFile();
             	if(source!=""){
+            		currXML = xml.read(source);
             		loadXML();
             		hasVerse = false;
             		deactivateTraverse();
@@ -221,6 +235,8 @@ public class Frame extends JFrame{
             }
         });
      
+        this.file.add(this.newSR);
+        this.file.addSeparator();
         this.file.add(this.imp);
         this.file.add(this.exp);
         this.file.addSeparator();
@@ -342,6 +358,7 @@ public class Frame extends JFrame{
 							dwOpen = false;
 							source = ((DocumentsWindow)arg0.getSource()).getCurrFile();
 							if(!source.equals("")){
+								currXML = xml.read(source);
 								loadXML();
 								hasVerse = true;
 								vs = ((DocumentsWindow)arg0.getSource()).getVerses();
@@ -508,7 +525,7 @@ public class Frame extends JFrame{
 		
 		tp.setToolTipText(text);
 		
-		if(tp.getParentPane()!=null){
+		
 			tp.addMouseListener(new MouseListener(){
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
@@ -541,7 +558,7 @@ public class Frame extends JFrame{
 				}
 				
 			});
-		}
+		
 		
 		ArrayList<ConstModel> tempList = currConst.getSubconst().getConstList();
 		
@@ -585,7 +602,6 @@ public class Frame extends JFrame{
 	}
 	
 	public void loadXML(){
-		this.currXML = xml.read(source);
 		this.currCont = genPane(currXML, new constContainer(currXML, null), 0);
 		this.currCont.setCollapsed(false);
 		this.currCont.setSrc(source);
@@ -625,5 +641,12 @@ public class Frame extends JFrame{
 			setVerseCount();
 			this.vCount.setText(this.currVerse);
 		}
+	}
+	
+	private void createNewSR(String title){
+		ConstModel m = new ConstModel(null);
+		m.setLabel(title);
+		this.currXML = m;
+		loadXML();
 	}
 }

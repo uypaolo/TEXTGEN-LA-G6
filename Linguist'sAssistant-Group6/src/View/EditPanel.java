@@ -100,7 +100,9 @@ public class EditPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				removeBlock();
+				if(c.getDetails().getParent()!=null){
+					removeBlock();
+				}
 			}
 			
 		});
