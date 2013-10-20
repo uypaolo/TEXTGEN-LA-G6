@@ -445,6 +445,8 @@ public class Frame extends JFrame{
     	view.setResizable(false);
     	view.getContentPane().add(viewlexicon);
 	}
+	
+	
 
 	
 	private constContainer genPane(ConstModel currConst, constContainer tp, int index){	
@@ -529,7 +531,7 @@ public class Frame extends JFrame{
 		this.mainArea.add(currCont, "pushx, growx, wrap");
 		this.revalidate();
 		this.mainArea.repaint();
-		this.vp.resetPanels();
+		this.vp.resetTables();
 		this.ep.resetPanel();
 		this.source = "";
 		//mainArea.printAll(getGraphics());

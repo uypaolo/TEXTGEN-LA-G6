@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import Model.*;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -31,10 +32,12 @@ public class EditPanel extends JPanel{
 	
 	private JTable features;
 	
+
 	private JPanel bPanel;
 	private JPanel fPanel;
 	private JLabel noFeature;
 	private JTabbedPane tPane;
+	
 	
 	public EditPanel(){
 		this.setLayout(new MigLayout("", "[grow]", "[grow]"));
@@ -82,7 +85,16 @@ public class EditPanel extends JPanel{
 		this.moveDown.setEnabled(false);
 		
 		this.addBlock = new JButton("Add Block");
+		this.addBlock.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				addBlock();
+			}
+			
+		});
 		this.addBlock.setEnabled(false);
+		
 		
 		this.removeBlock = new JButton("Remove Block");
 		this.removeBlock.addActionListener(new ActionListener(){
@@ -99,6 +111,16 @@ public class EditPanel extends JPanel{
 		this.addFeature.setEnabled(false);
 		
 		this.removeFeature = new JButton("Remove Feature");
+		this.removeFeature.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(features.getSelectedRow()>-1){
+					removeFeature();
+				}
+			}
+			
+		});
 		this.removeFeature.setEnabled(false);
 		
 		this.bPanel.add(this.addBlock, "pushx, center, wrap");
@@ -116,6 +138,19 @@ public class EditPanel extends JPanel{
 		this.tPane.add("Feature",this.fPanel);
 		
 		this.add(this.tPane);
+	}
+	
+	private void addBlock(){
+		JFrame addblock = new JFrame("Add Block");
+		AddBlockWindow addblockwindow = new AddBlockWindow(addblock);
+		addblock.pack();
+		addblock.setVisible(true);
+		addblock.setBounds(0,0,300,300);
+		addblock.setResizable(false);
+		addblock.getContentPane().add(addblockwindow);
+		
+	
+		
 	}
 	
 	public void activateButton(){
@@ -216,6 +251,12 @@ public class EditPanel extends JPanel{
 		ConstModel pm = cm.getParent();
 		pm.getSubconst().getConstList().remove(cm);
 		resetPanel();
-		Frame.vp.resetPanels();
+		Frame.vp.resetTables();
+	}
+	
+	public void removeFeature(){
+		ConstModel temp = this.c.getDetails();
+		temp.getFeatures().getFeatureList().remove(this.features.getSelectedRow());
+		setFeatures(temp.getFeatures().getFeatureList());
 	}
 }
