@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/Users/Asus/Documents/Justin/TEXTGEN-LA-G6/Linguist&apos;sAssistant-Group6/mysql-connector-java-5.1.24-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/miglayout-4.0-swing.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asus/Desktop/swingx-1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/git/testClone/TEXTGEN-LA-G6/Linguist&apos;sAssistant-Group6/External JARs/miglayout-4.0-swing.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/git/testClone/TEXTGEN-LA-G6/Linguist&apos;sAssistant-Group6/External JARs/mysql-connector-java-5.1.21-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/git/testClone/TEXTGEN-LA-G6/Linguist&apos;sAssistant-Group6/External JARs/swingx-1.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
