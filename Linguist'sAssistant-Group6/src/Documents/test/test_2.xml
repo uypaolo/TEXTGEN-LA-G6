@@ -1,0 +1,258 @@
+<const>
+   <label>TEST READ 2</label>
+   <features>
+      <feature>
+         <name>Verb Phrase</name>
+         <value>Unspecified</value>
+      </feature>
+      <feature>
+         <name>Voice</name>
+         <value>Active</value>
+      </feature>
+      <feature>
+         <name>Stative Clause Type</name>
+         <value>Event (non-stative)</value>
+      </feature>
+      <feature>
+         <name>Verb Phrase</name>
+         <value>Not an Adverbial Clause</value>
+      </feature>
+   </features>
+   <subconst>
+	   <const>
+		   <label>TEST READ 2</label>
+		   <concept>one day-A</concept>
+		   <features>
+		      <feature>
+				<name>Position in Adjective</name>
+				<value>Adjective</value>
+			  </feature>
+		   </features>
+	   </const>
+   </subconst>
+   <subconst>
+	   <const>
+	      <label>np</label>
+		  <features>
+			 <feature>
+				<name> Grammatical Relation </name>
+				<value> Subject </value>
+			 </feature> 
+			 <feature>
+				<name> Includes Relative Clause </name>
+				<value> Unspecified </value>
+			 </feature> 
+			 <feature>
+				<name> Positioning Info </name>
+				<value>Unspecified</value>
+			 </feature> 
+		  </features>
+		  <subconst>
+		      <const>
+			     <label>n</label>
+				 <concept>girl-A</concept>
+				 <features>
+					<feature>
+					   <name>Common/Proper</name>
+					   <value>Common</value>
+					</feature>
+					<feature>
+					   <name>Gender</name>
+					   <value>Feminine</value>
+					</feature>
+					<feature>
+					   <name>Type of Relative Clause</name>
+					   <value>Standard</value>
+					</feature>
+					<feature>
+					   <name>Count/Mass</name>
+					   <value>Countable</value>
+					</feature>
+				 </features>
+			  </const>
+		  </subconst>
+		  <subconst>
+		      <const>
+			     <label>np</label>
+				 <features>
+					<feature>
+					   <name>Includes Relative Clause</name>
+					   <value>Unspecified</value>
+					</feature>
+					<feature>
+					   <name>Positioning Info</name>
+					   <value>Unspecified</value>
+					</feature>
+					<feature>
+					   <name>Grammatical Relation</name>
+					   <value>No Grammatical Relation</value>
+					</feature>
+				 </features>
+				 <subconst>
+				     <const>
+					    <label>adp</label>
+						<concept>Name-A</concept>
+						<features>
+						   <feature>
+							  <name>Position in NP/Clause</name>
+							  <value>Phrase or Clause Initial</value>
+						   </feature>
+						</features>
+					 </const>
+				 </subconst>
+				 <subconst>
+				     <const>
+					    <label>n</label>
+						<concept>Melissa-A</concept>
+						<features>
+						   <feature>
+							  <name>Common/Proper</name>
+							  <value>Proper</value>
+						   </feature>
+						   <feature>
+							  <name>Gender</name>
+							  <value>Feminine</value>
+						   </feature>
+						   <feature>
+							  <name>Type of Relative Clause</name>
+							  <value>Standard</value>
+						   </feature>
+						   <feature>
+							  <name>Count/Mass</name>
+							  <value>Countable</value>
+						   </feature>
+						</features>
+					 </const>
+				 </subconst>
+			  </const>
+		  </subconst>
+	   </const>
+   </subconst>
+   <subconst>
+       <const>
+	      <label>vp</label>
+		  <subconst>
+		      <const>
+			     <label>v</label>
+				 <concept>sit-A</concept>
+				 <features>
+					<feature>
+					   <name>Type of Auxiliary</name>
+					   <value>Unspecified</value>
+					</feature>
+				 </features>
+			  </const>
+		  </subconst>
+	   </const>
+   </subconst>
+   <subconst>
+       <const>
+	      <label>np</label>
+		  <features>
+			 <feature>
+				<name>Includes Relative Clause</name>
+				<value>Unspecified</value>
+			 </feature>
+			 <feature>
+				<name>Positioning Info</name>
+				<value>Unspecified</value>
+			 </feature>
+			 <feature>
+				<name>Grammatical Relation</name>
+				<value>Oblique</value>
+			 </feature>
+		  </features>
+		  <subconst>
+		      <const>
+			     <label>adp</label>
+				 <concept>outside-A</concept>
+				 <features>
+					<feature>
+					   <name>Position in NP/Clause</name>
+					   <value>Phrase or Clause Initial</value>
+					</feature>
+				 </features>
+			  </const>
+		  </subconst>
+		  <subconst>
+		      <const>
+			     <label>n</label>
+				 <concept>house-A</concept>
+				 <features>
+					<feature>
+					   <name>Common/Proper</name>
+					   <value>Common</value>
+					</feature>
+					<feature>
+					   <name>Gender</name>
+					   <value>Neuter</value>
+					</feature>
+					<feature>
+					   <name>Type of Relative Clause</name>
+					   <value>Locative - Relativizer is where</value>
+					</feature>
+					<feature>
+					   <name>Count/Mass</name>
+					   <value>Countable</value>
+					</feature>
+				 </features>
+			  </const>
+		  </subconst>
+		  <subconst>
+		      <const>
+			     <label>np</label>
+				 <features>
+					<feature>
+					   <name>Includes Relative Clause</name>
+					   <value>Unspecified</value>
+					</feature>
+					<feature>
+					   <name>Positioning Info</name>
+					   <value>Unspecified</value>
+					</feature>
+					<feature>
+					   <name>Grammatical Relation</name>
+					   <value>No Grammatical Relation</value>
+					</feature>
+				 </features>
+				 <subconst>
+				     <const>
+					    <label>adp</label>
+						<concept>owner-A</concept>
+						<features>
+						   <feature>
+							  <name>Position in NP/Clause</name>
+							  <value>Phrase or Clause Initial</value>
+						   </feature>
+						</features>
+					 </const>
+				 </subconst>
+				 <subconst>
+				     <const>
+					    <label>n</label>
+						<concept>Melissa-A</concept>
+						<features>
+						   <feature>
+							  <name>Common/Proper</name>
+							  <value>Proper</value>
+						   </feature>
+						   <feature>
+							  <name>Gender</name>
+							  <value>Feminine</value>
+						   </feature>
+						   <feature>
+							  <name>Type of Relative Clause</name>
+							  <value>Standard</value>
+						   </feature>
+						   <feature>
+							  <name>Count/Mass</name>
+							  <value>Countable</value>
+						   </feature>
+						</features>
+					 </const>
+				 </subconst>
+			  </const>
+		  </subconst>
+	   </const>
+   </subconst>
+</const>
