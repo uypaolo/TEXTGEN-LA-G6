@@ -28,6 +28,7 @@ public class DocumentsWindow extends JFrame implements WindowListener{
 	private String sVerse;
 	private String sBook;
 	private String currFile;
+	private String[] vs;
 	
 	public DocumentsWindow(){
 		this.currFile = "";
@@ -45,11 +46,19 @@ public class DocumentsWindow extends JFrame implements WindowListener{
             public void itemStateChanged(ItemEvent ie) {
                 //enables the button when an item is selected
             	verseList.setModel(new JComboBox(getVerses(bookList.getSelectedItem().toString())).getModel());
+            	sBook = bookList.getSelectedItem().toString();
+            	sVerse = verseList.getSelectedItem().toString();
             }
 		});
 		
 		
 		this.verseList = new JComboBox(getVerses(this.bookList.getSelectedItem().toString()));
+		this.verseList.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent ie) {
+                //enables the button when an item is selected
+            	sVerse = verseList.getSelectedItem().toString();
+            }
+		});
 		this.verseList.setSelectedIndex(0);
 		this.sVerse = verseList.getSelectedItem().toString();
 		
@@ -109,6 +118,8 @@ public class DocumentsWindow extends JFrame implements WindowListener{
 		String[] s = new String[verses.size()];
 		s = verses.toArray(s);
 		
+		this.vs = s;
+		System.out.println(verses.size());
 		return s;
 	}
 	
@@ -192,5 +203,17 @@ public class DocumentsWindow extends JFrame implements WindowListener{
 	public void windowOpened(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public String getVerse(){
+		return this.sVerse;
+	}
+	
+	public String getBook(){
+		return this.sBook;
+	}
+	
+	public String[] getVerses(){
+		return this.vs;
 	}
 }

@@ -39,6 +39,13 @@ import net.miginfocom.swing.MigLayout;
 
 public class Frame extends JFrame{
 	static boolean dwOpen;
+	private boolean hasVerse;
+	
+	private String[] vs;
+	private String v;
+	private String b;
+	
+	private String currVerse;
 	
 	private boolean edit;
 	
@@ -84,7 +91,9 @@ public class Frame extends JFrame{
 	private JTextArea gArea;
 	
 	public Frame(){
-		dwOpen = false;
+		this.currVerse = "0/0";
+		this.hasVerse = false;
+		this.dwOpen = false;
 		this.p = new printConst();
 		this.edit = false;
 		this.setLayout(new MigLayout());
@@ -156,6 +165,8 @@ public class Frame extends JFrame{
             	browseFile();
             	if(source!=""){
             		loadXML();
+            		hasVerse = false;
+            		deactivateTraverse();
             		/*currXML = xml.read(source);
             		currCont = genPane(currXML, new constContainer(currXML, null), 0);
             		currCont.setCollapsed(false);
@@ -332,6 +343,12 @@ public class Frame extends JFrame{
 							source = ((DocumentsWindow)arg0.getSource()).getCurrFile();
 							if(!source.equals("")){
 								loadXML();
+								hasVerse = true;
+								vs = ((DocumentsWindow)arg0.getSource()).getVerses();
+								v = ((DocumentsWindow)arg0.getSource()).getVerse();
+								b = ((DocumentsWindow)arg0.getSource()).getBook();
+								setVerseCount();
+								activateTraverse();
 							}
 						}
 
@@ -374,15 +391,37 @@ public class Frame extends JFrame{
 		});
 		
 		this.nVerse = new JButton("Next");
+		this.nVerse.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(hasVerse){
+					nextVerse();
+				}
+			}
+			
+		});
+		this.nVerse.setEnabled(false);
 		this.pVerse = new JButton("Prev");
+		this.pVerse.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(hasVerse){
+					prevVerse();
+				}
+			}
+			
+		});
+		this.pVerse.setEnabled(false);
 		this.gLabel = new JLabel("Translation: ");
 		this.vCount = new JLabel("0/0");
 		
 		this.bottomPanel.add(this.gLabel, "right, split 3, span 3");
 		this.bottomPanel.add(this.gPane, "growx ,left, span, wrap");
-		this.bottomPanel.add(this.nVerse,"right, split 2, span 2");
+		this.bottomPanel.add(this.pVerse,"right, split 2, span 2");
 		this.bottomPanel.add(this.vCount, "center");
-		this.bottomPanel.add(this.pVerse,"left, wrap");
+		this.bottomPanel.add(this.nVerse,"left, wrap");
 		this.bottomPanel.add(this.dButton);
 	}
 	
@@ -446,9 +485,6 @@ public class Frame extends JFrame{
     	view.getContentPane().add(viewlexicon);
 	}
 	
-	
-
-	
 	private constContainer genPane(ConstModel currConst, constContainer tp, int index){	
 		String text = "<html>";
 		String s = "";
@@ -468,7 +504,7 @@ public class Frame extends JFrame{
 		}
 		
 		text = text.concat("</html>");
-		System.out.println(text);
+		//System.out.println(text);
 		
 		tp.setToolTipText(text);
 		
@@ -516,6 +552,32 @@ public class Frame extends JFrame{
 		return tp;
 	}
 	
+	private void deactivateTraverse(){
+		this.pVerse.setEnabled(false);
+		this.nVerse.setEnabled(false);
+		this.vCount.setText("0/0");
+	}
+	
+	private void activateTraverse(){
+		this.pVerse.setEnabled(true);
+		this.nVerse.setEnabled(true);
+		this.vCount.setText(currVerse);
+	}
+	
+	private void setVerseCount(){;
+		int i;
+		//System.out.println("SETTING!!!!!!!!!!!");
+		for(i=0; i<this.vs.length; i++){
+			//System.out.println(v+":"+vs[i]);
+			if(vs[i].equals(v)){
+				break;
+			}
+		}
+		
+		this.currVerse = ((i+1)+"/"+this.vs.length);
+
+	}
+	
 	private void setDetails(constContainer c){
 		this.vp.setConst(c);
 		this.ep.setConst(c);
@@ -536,5 +598,32 @@ public class Frame extends JFrame{
 		this.source = "";
 		//mainArea.printAll(getGraphics());
 		//printAll(getGraphics());
+	}
+	
+	public void nextVerse(){
+		int i = Integer.parseInt((this.v.split("_"))[1]);
+		
+		//System.out.println(i+":"+this.vs.length);
+		
+		if(i<this.vs.length){
+			this.v = (this.v.split("_"))[0]+"_"+(i+1);
+			this.source = "src/Documents/"+this.b+"/"+this.v+".xml";
+			//System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!11111"+this.source);
+			loadXML();
+			setVerseCount();
+			this.vCount.setText(this.currVerse);
+		}
+	}
+	
+	public void prevVerse(){
+		int i = Integer.parseInt((this.v.split("_"))[1]);
+		//System.out.println("PREV!!!!!!!!!!!!!");
+		if(i>1){
+			this.v = (this.v.split("_"))[0]+"_"+(i-1);
+			this.source = "src/Documents/"+this.b+"/"+this.v+".xml";
+			loadXML();
+			setVerseCount();
+			this.vCount.setText(this.currVerse);
+		}
 	}
 }
