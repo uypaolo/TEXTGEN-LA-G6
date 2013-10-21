@@ -105,7 +105,7 @@ public class ViewConcept extends JPanel{
 	
 public void UpdateTable(String check, JTable tList){
 		
-		String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "nitsujgarcia";
+		String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "password";
 		Connection con;
 		try {
 			con = DriverManager.getConnection(host,uName,pWord);

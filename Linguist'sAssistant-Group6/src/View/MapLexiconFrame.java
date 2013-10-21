@@ -10,7 +10,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -23,6 +25,9 @@ import net.miginfocom.swing.MigLayout;
 
 public class MapLexiconFrame extends JFrame{
 	private JSplitPane sPane;
+	
+	private JComboBox<String> cBox;
+	private JLabel cLabel;
 	
 	private JPanel cont;
 	private JPanel tools;
@@ -45,7 +50,7 @@ public class MapLexiconFrame extends JFrame{
 		setFrame();
 		
 		try{
-			String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "daniellel";
+			String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "password";
 			Connection con = DriverManager.getConnection(host,uName,pWord);
 			
 			Statement stmt = con.createStatement();
@@ -72,15 +77,34 @@ public class MapLexiconFrame extends JFrame{
 	}
 	
 	private void init(){
+		this.cLabel = new JLabel("Filter: ");
 		
+		this.cBox = new JComboBox<String>();
+		this.cBox.addItem("ADJ");
+		this.cBox.addItem("ADVS");
+		this.cBox.addItem("CONJUNC");
+		this.cBox.addItem("FEM NOUNS");
+		this.cBox.addItem("MASC NOUNS");
+		this.cBox.addItem("N");
+		this.cBox.addItem("PRTC");
+		this.cBox.addItem("PLACE NAMES");
+		this.cBox.addItem("REL");
+		this.cBox.addItem("V");
 		
-		this.lPane = new JScrollPane(new JTextArea("llllllllllllllllllllllllllllllllllllllllllll\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nllllllllllllllllllllllllllllllllll"));
-		this.oPane = new JScrollPane(new JTextArea("llllllllllllllllllllllllllllllllllllllllllll\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nllllllllllllllllllllllllllllllllll"));
+		DefaultTableModel m = new DefaultTableModel(new String[]{"Name", "Mapping"}, 0);
+		this.oTable = new JTable(m);
+		
+		m = new DefaultTableModel(new String[]{"Stems", "Features", "Glosses"}, 0);
+		this.lTable = new JTable(m);
+		
+		this.lPane = new JScrollPane(this.lTable);
+		this.oPane = new JScrollPane(this.oTable);
 		
 		this.sPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		//this.sPane.setLayout(new MigLayout());
-		this.sPane.add(this.lPane);
 		this.sPane.add(this.oPane);
+		this.sPane.add(this.lPane);	
+		this.sPane.setResizeWeight(.5d);
 		
 		this.cont = new JPanel();
 		this.cont.setLayout(new MigLayout());
@@ -92,6 +116,9 @@ public class MapLexiconFrame extends JFrame{
 		this.tools.setLayout(new MigLayout());
 		this.tools.setPreferredSize(new Dimension(200, 500));
 		this.tools.setBackground(Color.BLUE);
+		
+		this.tools.add(this.cLabel, "split 2, span 2, center");
+		this.tools.add(this.cBox, "wrap, pushx");
 		
 		this.add(cont, "push, grow");
 		this.add(tools, "growy");

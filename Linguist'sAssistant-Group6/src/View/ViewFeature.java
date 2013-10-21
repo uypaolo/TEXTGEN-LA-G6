@@ -52,7 +52,7 @@ public class ViewFeature extends JPanel{
 		cBox.addItem("ADV");
 		
 		try{
-			String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "nitsujgarcia";
+			String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "password";
 			Connection con = DriverManager.getConnection(host,uName,pWord);
 			
 			Statement stmt = con.createStatement();
@@ -112,7 +112,7 @@ public class ViewFeature extends JPanel{
 	
 	public void UpdateTable(String check, JTable tList){
 		
-		String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "daniellel";
+		String host = "jdbc:mysql://localhost:3306/LA", uName = "root", pWord = "password";
 		Connection con;
 		try {
 			con = DriverManager.getConnection(host,uName,pWord);
